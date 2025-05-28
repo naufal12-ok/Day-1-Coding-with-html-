@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Absensi Pulang Siswa</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f9f9f9;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .absen-container {
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      text-align: center;
+      width: 300px;
+    }
+    input, select, button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+    }
+    button {
+      background-color: #28a745;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #218838;
+    }
+    .hasil {
+      margin-top: 20px;
+      color: #333;
+      font-size: 16px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="absen-container">
+  <h2>Absensi Pulang</h2>
+  <input type="text" id="nama" placeholder="Nama Siswa">
+  <select id="kelas">
+    <option value="">Pilih Kelas</option>
+    <option value="X DPIB 1">X DPIB 1</option>
+    <option value="X DPIB 2">X DPIB 2</option>
+    <option value="X DPIB 3">X DPIB 3</option>
+    <option value="XI DPIB 1">XI DPIB 1</option>
+    <option value="XI DPIB 2">XI DPIB 2</option>
+    <option value="XI DPIB 3">XI DPIB 3</option>
+    <option value="XII DPIB 1">XII DPIB 1</option>
+    <option value="XII DPIB 2" >XII DPIB 2</option>
+    <option value="XII DPIB 3">XII DPIB 3</option>
+    <option value="X TKRO 1" >X TKRO 1</option>
+    <option value="X TKRO 2">X TKRO 2</option>
+    <option value="X TKRO 3">X TKRO 3</option>
+    <option value="XI TKRO 1">XI TKRO 1</option>
+     <option value="XI TKRO 2">XI TKRO 2</option>
+     <option value="XI TKRO 3">XI TKRO 3</option>   
+    <option value="XII TKRO 1">XII TKRO 1</option>
+    <option value="XII TKRO 2">XII TKRO 2</option>
+    <option value="XII TKRO 3">XII TKRO 3</option>
+    <option value="X TBSM 1">X TBSM 1</option>
+    <option value="X TBSM 2">X TBSM 2</option>
+    <option value="X TBSM 3">X TBSM 3</option>
+    <option value="XI TBSM 1">XI TBSM 1</option>
+    <option value="XI TBSM 2">XI TBSM 2</option>
+    <option value="XI TBSM 3">XI TBSM 3</option>
+    <option value="XII TBSM 1">XII TBSM 1</option>
+    <option value="XII TBSM 2">XII TBSM 2</option>
+    <option value="XII TBSM 3">XII TBSM 3</option>
+    <option value="X TKJ 1">X TKJ 1</option>
+    <option value="X TKJ 2">X TKJ 2</option>
+    <option value="X TKJ 3">X TKJ 3</option>
+    <option value="XI TKJ 1">XI TKJ 1</option>
+    <option value="XI TKJ 2">XI TKJ 2</option>
+    <option value="XI TKJ 3">XI TKJ 3</option>
+    <option value="XII TKJ 1">XII TKJ 1</option>
+    <option value="XII TKJ 2">XII TKJ 2</option>
+    <option value="XII TKJ 3">XII TKJ 3</option>
+    <option value="X DKV 1">X DKV 1</option>
+  <option value="X DKV 2">X DKV 2</option>
+  <option value="X DKV 3">X DKV 3</option>
+  <option value="XI DKV 1">XI DKV 1</option>
+  <option value="XI DKV 2" >XI DKV 2"</option>
+  <option value="XI DKV 3">XI DKV 3</option>
+  <option value="XII DKV 1">XII DKV 1</option>
+  <option value="XII DKV 2">XII DKV 2</option>
+  <option value="XII DKV 3">XII DKV 3</option>
+    <!-- Tambahkan kelas sesuai kebutuhan -->
+  </select>
+  <button onclick="absenPulang()">Absen Pulang</button>
+  <div class="hasil" id="hasil"></div>
+</div>
+
+<script>
+  function absenPulang() {
+    const nama = document.getElementById("nama").value.trim();
+    const kelas = document.getElementById("kelas").value;
+    const hasil = document.getElementById("hasil");
+
+    if (nama === "" || kelas === "") {
+      hasil.style.color = "red";
+      hasil.textContent = "Nama dan kelas harus diisi!";
+      return;
+    }
+
+    const waktu = new Date().toLocaleString('id-ID', {
+      hour: '2-digit', minute: '2-digit', second: '2-digit',
+      day: '2-digit', month: 'long', year: 'numeric'
+    });
+
+    hasil.style.color = "green";
+    hasil.textContent = `Terima kasih, ${nama} dari kelas ${kelas}. Absensi pulang berhasil dicatat pada ${waktu}.`;
+  }
+</script>
+
+</body>
+</html>

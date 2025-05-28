@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Absensi PKL - Datang & Pulang</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #eef2f5;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .absensi-box {
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      width: 350px;
+      text-align: center;
+    }
+
+    input, select, button {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+    }
+
+    button {
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .datang {
+      background-color: #007bff;
+      color: white;
+    }
+
+    .datang:hover {
+      background-color: #0069d9;
+    }
+
+    .pulang {
+      background-color: #28a745;
+      color: white;
+    }
+
+    .pulang:hover {
+      background-color: #218838;
+    }
+
+    .hasil {
+      margin-top: 20px;
+      font-size: 15px;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+
+<div class="absensi-box">
+  <h2>Absensi PKL</h2>
+  <input type="text" id="nama" placeholder="Nama Siswa">
+  <select id="kelas">
+    <option value="">Pilih Kelas PKL</option>
+    <option value="XII DPIB 1">XII DPIB 1</option>
+    <option value="XI DPIB 2">XI DPIB 2</option>
+    <option value="XII DPIB 3">XII DPIB 3</option>
+    <option value="XII TBSM 1">XII TBSM 1</option>
+    <option value="XII TBSM 2">XII TBSM 2</option>
+    <option value="XII TBSM 3">XII TBSM 3</option>
+    <option value="XII TKRO 1">XII TKRO 1</option>
+    <option value="XII TKRO 1">XII TKRO 1</option>
+     <option value="XII TKRO 3">XII TKRO 3</option>
+     <option value="XII TKJ 1">XII TKJ 1</option>
+       <option value="XII TKJ 2">XII TKJ 2</option>
+         <option value="XII TKJ 3">XII TKJ 3</option>
+         <option value="XII DKV 1">XII DKV 1</option>
+         <option value="XII DKV 2">XII DKV 2</option>
+         <option value="XII DKV 3">XII DKV 3</option>
+    <!-- Tambahkan kelas lain jika perlu -->
+  </select>
+  <button class="datang" onclick="absen('datang')">Absen Datang</button>
+  <button class="pulang" onclick="absen('pulang')">Absen Pulang</button>
+  <div class="hasil" id="hasil"></div>
+</div>
+
+<script>
+  function absen(jenis) {
+    const nama = document.getElementById("nama").value.trim();
+    const kelas = document.getElementById("kelas").value;
+    const hasil = document.getElementById("hasil");
+
+    if (nama === "" || kelas === "") {
+      hasil.style.color = "red";
+      hasil.textContent = "Nama dan kelas wajib diisi!";
+      return;
+    }
+
+    const waktu = new Date().toLocaleString('id-ID', {
+      hour: '2-digit', minute: '2-digit', second: '2-digit',
+      day: '2-digit', month: 'long', year: 'numeric'
+    });
+
+    const pesan = jenis === "datang"
+      ? `Selamat datang, ${nama} dari kelas ${kelas}. Anda absen datang pada ${waktu}.`
+      : `Terima kasih, ${nama} dari kelas ${kelas}. Anda absen pulang pada ${waktu}.`;
+
+    hasil.style.color = jenis === "datang" ? "blue" : "green";
+    hasil.textContent = pesan;
+  }
+</script>
+
+</body>
+</html>

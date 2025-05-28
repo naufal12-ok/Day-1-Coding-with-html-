@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <title>Absensi</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h2>Form Absensi</h2>
+    <form id="absensiForm">
+      <input type="text" id="nama" placeholder="Nama" required />
+      <input type="text" id="kelas" placeholder="Kelas" required />
+      <button type="submit">Submit</button>
+    </form>
+
+    <h3>Data Absensi</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Nama</th>
+          <th>Kelas</th>
+          <th>Waktu</th>
+        </tr>
+      </thead>
+      <tbody id="dataAbsensi">
+      </tbody>
+    </table>
+  </div>
+
+  <script>
+    const form = document.getElementById("absensiForm");
+    const tbody = document.getElementById("dataAbsensi");
+
+    // Ambil data dari localStorage
+    let absensiList = JSON.parse(localStorage.getItem("absensi")) || [];
+
+    // Tampilkan data awal
+    renderTable();
+
+    // Saat form disubmit
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      const nama = document.getElementById("nama").value;
+      const kelas = document.getElementById("kelas").value;
+      const waktu = new Date().toLocaleString();
+
+      absensiList.push({ nama, kelas, waktu });
+      localStorage.setItem("absensi", JSON.stringify(absensiList));
+      renderTable();
+
+      form.reset();
+    });
+
+    function renderTable() {
+      tbody.innerHTML = "";
+      absensiList.forEach((item) => {
+        const tr = document.createElement("tr");
+        tr.innerHTML = `<td>${item.nama}</td><td>${item.kelas}</td><td>${item.waktu}</td>`;
+        tbody.appendChild(tr);
+      });
+    }
+  </script>
+</body>
+</html>

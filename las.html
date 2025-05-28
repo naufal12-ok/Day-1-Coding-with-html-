@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Menu Navigasi Absensi</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f0f2f5;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .menu-container {
+      background-color: #fff;
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      width: 300px;
+    }
+
+    h2 {
+      margin-bottom: 30px;
+    }
+
+    .menu-button {
+      display: block;
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    .btn-absensi     { background-color: #007bff; color: white; }
+    .btn-pulang      { background-color: #28a745; color: white; }
+    .btn-pkl         { background-color: #ffc107; color: black; }
+    .btn-beranda     { background-color: #17a2b8; color: white; }
+    .btn-laporan     { background-color: #6f42c1; color: white; }
+
+    .menu-button:hover {
+      opacity: 0.9;
+    }
+  </style>
+</head>
+<body>
+
+<div class="menu-container">
+  <h2>Menu Absensi</h2>
+
+  <button class="menu-button btn-absensi" onclick="location.href='absensi.html'">
+    Absensi Umum
+  </button>
+
+  <button class="menu-button btn-pulang" onclick="location.href='absen pulang.html'">
+    Absensi Pulang
+  </button>
+
+  <button class="menu-button btn-pkl" onclick="location.href='absen pkl.html'">
+    Absensi PKL
+  </button>
+
+  <button class="menu-button btn-beranda" onclick="location.href='index.html'">
+    Kembali ke Beranda
+  </button>
+  </button>
+</div>
+
+</body>
+</html>
